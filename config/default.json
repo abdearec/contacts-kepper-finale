@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://abdearec:1596321@cluster0-1e50k.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtsecret": "cod3box{kenitr@}abdetest@like!!@cod3box"
+}
