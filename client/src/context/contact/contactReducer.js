@@ -20,14 +20,26 @@ export default (state, action) => {
         ...state,
         contacts: state.contacts.filter(
           contact => contact.id !== action.payload
-        )
+        ),
+        filtred:
+          state.filtred === null
+            ? state.filtred
+            : state.filtred.filter(contact => contact.id !== action.payload)
       };
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map(contact => {
           return contact.id === action.payload.id ? action.payload : contact;
-        })
+        }),
+        filtred:
+          state.filtred === null
+            ? state.filtred
+            : state.filtred.map(contact => {
+                return contact.id === action.payload.id
+                  ? action.payload
+                  : contact;
+              })
       };
     case SET_CURRENT:
       return {
