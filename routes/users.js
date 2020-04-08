@@ -12,13 +12,11 @@ const User = require("../models/User");
 router.post(
   "/",
   [
-    check("name", "please enter your full name")
-      .not()
-      .isEmpty(),
+    check("name", "please enter your full name").not().isEmpty(),
     check("email", "please entre valid email").isEmail(),
     check("password", "please entre 6 or mor character").isLength({
-      min: 6
-    })
+      min: 6,
+    }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -35,7 +33,7 @@ router.post(
       user = new User({
         name,
         email,
-        password
+        password,
       });
       //create salt to hash password
       let salt = await bycrypt.genSalt(10);
@@ -49,19 +47,19 @@ router.post(
       // Get token with user in this token
       let payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       jwt.sign(
         payload,
         config.get("jwtsecret"),
         {
-          expiresIn: 360000
+          expiresIn: 360000,
         },
         (err, token) => {
           if (err) throw err;
-          res.json({ token, expiresIn: "360000 secound" });
+          res.json({ token });
         }
       );
     } catch (err) {

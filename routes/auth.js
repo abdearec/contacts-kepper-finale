@@ -26,7 +26,7 @@ router.post(
   "/",
   [
     check("email", "Please enter a valid email").isEmail(),
-    check("password", "Please enter a valid password").exists()
+    check("password", "Please enter a valid password").exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -46,8 +46,8 @@ router.post(
       }
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
       jwt.sign(
         payload,
@@ -55,7 +55,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token, expiresIn: "360000 secound" });
+          res.json({ token });
         }
       );
     } catch (err) {
