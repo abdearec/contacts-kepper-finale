@@ -7,7 +7,7 @@ You need to add this file to: "/config/default.json", and you need to add this c
 "jwtsecret": "write here your code secret"
 }
 
-you need to get your mongoURI to connect your Backend Nodejs with your mongodb database.
+you need to get your mongoURI to connect your Backend Nodejs with your mongodb database from AtlasCloud for Mongodb or Mongodb in Your server or cloud ...
 jwtsecret : if you dont know what is jwt you need to google it ;)
 
 For information:
